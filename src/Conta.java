@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Conta {
-    protected  int numero; // Número da conta
+    protected int numero; // Número da conta
     protected BigDecimal saldo;
     protected Cliente cliente;
     protected List<String> extrato; //Lista para armazenar o extrato de transaçoes.
