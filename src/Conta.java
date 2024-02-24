@@ -29,4 +29,5 @@ public class Conta {
     public List<String> getExtrato() {
         return extrato;
     }
+    public abstract void depositar(BigDecimal valor);
 }
