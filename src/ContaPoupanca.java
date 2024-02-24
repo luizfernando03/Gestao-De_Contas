@@ -5,6 +5,9 @@ public class ContaPoupanca extends Conta{
     public ContaPoupanca(int numero, BigDecimal saldo, Cliente cliente, List<String> extrato) {
         super(numero, saldo, cliente, extrato);
     }
+
+    // Método depositar
+    @Override
     public void depositar(BigDecimal valor){
         saldo = saldo.add(valor);
         adicionarTransacao("Depósito realizado com sucesso ", valor);
