@@ -23,7 +23,7 @@ public class ContaCorrente extends Conta {
     }
     public void depositar(BigDecimal valor) {
         saldo =saldo.add(valor);
-        adicionarTransacao("Deposito realizado com sucesso " + destino.getNumero(), valor);
+        adicionarTransacao("Deposito realizado com sucesso ", valor);
     }
 
 

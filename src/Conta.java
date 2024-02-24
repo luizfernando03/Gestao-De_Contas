@@ -29,5 +29,25 @@ public class Conta {
     public List<String> getExtrato() {
         return extrato;
     }
+
+    // Métodos para realizar operações especificas.
     public abstract void depositar(BigDecimal valor);
+
+    public abstract boolean sacar(BigDecimal valor) throws SaldoInsuficienteException;
+
+    public abstract void transferir(Conta destino, BigDecimal valor) throws SaldoInsuficienteException;
+
+    // Método adicona transação ao extrato.
+    protected void adicionarTransacao(String descricao, BigDecimal valor) {
+        extrato.add(descricao + " - Valor: " + valor + " - Saldo: " + saldo );
+    }
+
+    // Metodo para exibir o extrato
+    public void exibirExtrato(){
+        System.out.println("===== Seu Extrato da Conta =====");
+        for (String trasacao : extrato){
+            System.out.println(trasacao);
+        }
+        System.out.println("===============================================");
+    }
 }
