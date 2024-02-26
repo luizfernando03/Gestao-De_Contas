@@ -7,18 +7,19 @@
     <list default="true" id="10543d33-bbb9-413f-87b7-97a54cd52afd" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../PrimeiroProjeto/PrimeiroProjeto.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../agencia-1138/agencia-1138/agencia-1138.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../agencia/agencia.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../agencia/src/Cliente.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../agencia/src/Conta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../agencia/src/TipoDeConta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../agencia/src/TipoCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../agencia/src/TipoConta.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../calculo/calculo.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../conta/conta.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../heranca/heranca/heranca.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sistema-bancario/sistema-bancario.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../sistema-bancario/src/Conta.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../sistema-bancario/src/TipoDeConta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ContaInvestimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ContaInvestimento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ContaPoupanca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ContaPoupanca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/t798687/projetos/GestaoDeContas",
     "onboarding.tips.debug.path": "C:/Users/t798687/projetos/GestaoDeContas/src/Main.java"

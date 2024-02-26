@@ -84,19 +84,55 @@ public class Cliente {
     public void realizarOperacao(String operacao, Scanner scanner) {
         switch (operacao) {
             case "1":
-                // Código para dpósito
+                System.out.println("Digiet eo valor do depósito: "); // Código para dpósito
+                BigDecimal valorDeposito = scanner.nextBigDecimal();
                 break;
             case "2":
-                // Código para saque
+                System.out.println("Dite o valore do saque: "); // Código para saque
+                BigDecimal valorSaque = scanner.nextBigDecimal();
+                try {
+                    if (contas.get(0).sacar(valorSaque)) {
+                        System.out.println("Saque realizado com sucesso");
+                    } else {
+                        System.out.println("Saque não pode ser realizado. Verifique seu saldo. ");
+                    }
+                } catch (SaldoInsuficienteException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case "3":
-                // Código para transferência
-                break;
+                System.out.println("Digite o nome da Conta de Destino: "); // Código para transferência
+                int numeroContaDestino = scanner.nextInt();
+                Conta contaDestino = null;
+                for (Conta conta : contas) {
+                    if (conta.getNumero() == numeroContaDestino) {
+                        contaDestino = conta;
+                        break;
+                    }
+                }
+                if ( contaDestino == null) {
+                    System.out.println("Conta de destino não encontrada. ");
+                    break;
+                }
+                System.out.println("Digite o valor da transferência: ");
+                BigDecimal valorTransferencia = scanner.nextBigDecimal();
+                try {
+                    contas.get(0).transferir(contaDestino, valorTransferencia); //supodo que esta usando a primeira conta do cliente.
+                    System.out.println("Transferencia realizada com sucesso");
+                } catch (SaldoInsuficienteException e) {
+                    System.out.println(e.getMessage());
+                }
             case "4":
-                // Código para exibir extrato
+                System.out.println("Extrato"); // Código para exibir extrato
+                contas.get(0).exibirExtrato();
                 break;
             case "5":
-                // Código para aplicar rendimento
+                System.out.println("Aplicar "); // Código para aplicar rendimento
+                if (contas.get(0) instanceof ContaInvestimento){
+                    System.out.println("Rendimento aplicando com sucesso.");
+                } else {
+                    System.out.println("Operação disponivel apenas para investimento. ");
+                }
                 break;
             case "6":
                 System.out.println("Encerando o Sistema. Obrigado por escolher noso Banco!");
