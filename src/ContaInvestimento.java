@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContaInvestimento extends Conta{
@@ -6,7 +7,7 @@ public class ContaInvestimento extends Conta{
     private static final BigDecimal REDIMENTO_EXTRA_PJ = new BigDecimal("0.04"); //Rendimento dobrado pessoa PJ
 
     public ContaInvestimento(int numero, BigDecimal saldo, Cliente cliente, List<String> extrato) {
-        super(numero, saldo, cliente, extrato);
+        super(numero, saldo, cliente, new ArrayList<>(extrato));
     }
 
     // Método depositar para Conta Investimento
@@ -20,7 +21,7 @@ public class ContaInvestimento extends Conta{
     @Override
     public boolean sacar(BigDecimal valor) throws SaldoInsuficienteException {
         if (valor.compareTo(saldo) > 0) {
-            throw new SaldoInsuficienteException("Saldo insuficiente na Conta " + numero +);
+            throw new SaldoInsuficienteException("Saldo insuficiente na Conta " + numero + ".");
         } else {
             saldo = saldo.subtract(valor);
             adicionarTransacao("Saque realizado com sucesso ", valor);
@@ -33,7 +34,14 @@ public class ContaInvestimento extends Conta{
     public void transferir(Conta destino, BigDecimal valor) throws SaldoInsuficienteException {
         if (this.sacar(valor)) {
             destino.depositar(valor);
-            adicionarTransacao("Transferencia aplicada com sucesso " rendimneto);
+            calcularRendimento();
+            adicionarTransacao("Transferencia aplicada com sucesso para conta " + destino.getNumero(), valor );
         }
+    }
+    public  void calcularRendimento(){
+        BigDecimal rendimentoExtra = cliente.getTipo() == TipoCliente.PESSOA_JURIDICA ? REDIMENTO_EXTRA_PJ : REDIMENTO_EXTRA_PF;
+        BigDecimal rendimento = saldo.multiply(rendimentoExtra);
+        saldo =saldo.add(rendimento);
+        adicionarTransacao("Rendimento aplicado com sucesso ", rendimento);
     }
 }

@@ -1,9 +1,8 @@
 import java.math.BigDecimal;
-import java.util.List;
 
 public class ContaPoupanca extends Conta{
-    public ContaPoupanca(int numero, BigDecimal saldo, Cliente cliente, List<String> extrato) {
-        super(numero, saldo, cliente, extrato);
+    public ContaPoupanca(int numero, BigDecimal saldo, Cliente cliente) {
+        super(numero, saldo, cliente);
     }
 
     // Método depositar

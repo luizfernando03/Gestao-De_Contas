@@ -1,14 +1,15 @@
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
     private String nome;
     private String documento;  // CPF ou CNPJ
-    private TipoConta tipo;  // Pessoa Fisica ou Pessoa Juridica.
-    private List<Conta> contas;
+    private TipoCliente tipo;  // Pessoa Fisica ou Pessoa Juridica.
+    private List<Conta> contas;  // Lista de contas do Cliente
 
-    public Cliente(String nome, String documento, TipoConta tipo, List<Conta> contas) {
+    public Cliente(String nome, String documento, TipoCliente tipo) {
         this.nome = nome;
         this.documento = documento;
         this.tipo = tipo;
@@ -31,11 +32,11 @@ public class Cliente {
         this.documento = documento;
     }
 
-    public TipoConta getTipo() {
+    public TipoCliente getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoConta tipo) {
+    public void setTipo(TipoCliente tipo) {
         this.tipo = tipo;
     }
 
@@ -55,14 +56,14 @@ public class Cliente {
                 novaConta = new ContaCorrente(contas.size() + 1, saldoInicial, this);
                 break;
             case POUPANCA:
-                if (tipo == TipoClioente.PESSOA_JURIDICA) {
+                if (tipo == TipoCliente.PESSOA_JURIDICA) {
                     System.out.println("Cliente pessoa Juridica não pode abrir Conta Poupança ! ");
                     return;
                 }
                 novaConta = new ContaPoupanca(contas.size() + 1, saldoInicial, this);
                 break;
             case INVESTIMENTO:
-                novaConta = new ContaInvestimento(contas.size() + 1, saldoInicial, this);
+                novaConta = new ContaInvestimento(contas.size() + 1, saldoInicial, this, new ArrayList<>());
                 break;
         }
         contas.add(novaConta);
@@ -98,7 +99,7 @@ public class Cliente {
                 // Código para aplicar rendimento
                 break;
             case "6":
-                System.out.println("Saindo. Obrigado por escolher noso Banco!");
+                System.out.println("Encerando o Sistema. Obrigado por escolher noso Banco!");
                 System.exit(0);
                 break;
             default:

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Conta {
@@ -12,6 +13,9 @@ public class Conta {
         this.saldo = saldo;
         this.cliente = cliente;
         this.extrato = extrato; //Incializa uma lista vazia de extrato.
+    }
+
+    public Conta(int numero, BigDecimal saldo, Cliente cliente) {
     }
 
     public int getNumero() {
@@ -31,11 +35,28 @@ public class Conta {
     }
 
     // Métodos para realizar operações especificas.
-    public abstract void depositar(BigDecimal valor);
+    public void depositar(BigDecimal valor) {
+        saldo = saldo.add(valor);
+        adicionarTransacao("Deposito realizado com sucesso ", valor);
+    }
 
-    public abstract boolean sacar(BigDecimal valor) throws SaldoInsuficienteException;
+    public boolean sacar(BigDecimal valor) throws SaldoInsuficienteException {
+        if (valor.compareTo(saldo) > 0){
+            throw new SaldoInsuficienteException("Saldo insuficiente na conta " + numero + ".");
+        } else {
+            saldo = saldo.subtract(valor);
+            adicionarTransacao("Saque realizado com sucesso " , valor);
+            return true;
+        }
+    }
 
-    public abstract void transferir(Conta destino, BigDecimal valor) throws SaldoInsuficienteException;
+    public void transferir(Conta destino, BigDecimal valor) throws SaldoInsuficienteException{
+        if (this.sacar(valor)) {
+            destino.depositar(valor);
+            adicionarTransacao("Trasação realizada com sucesso para conta " + destino.getNumero(), valor);
+
+        }
+    }
 
     // Método adicona transação ao extrato.
     protected void adicionarTransacao(String descricao, BigDecimal valor) {
