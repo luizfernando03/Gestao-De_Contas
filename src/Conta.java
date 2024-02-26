@@ -12,7 +12,7 @@ public class Conta {
         this.numero = numero;
         this.saldo = saldo;
         this.cliente = cliente;
-        this.extrato = extrato; //Incializa uma lista vazia de extrato.
+        this.extrato = new ArrayList<>(); //Incializa uma lista vazia de extrato.
     }
 
     public Conta(int numero, BigDecimal saldo, Cliente cliente) {
@@ -65,7 +65,7 @@ public class Conta {
 
     // Metodo para exibir o extrato
     public void exibirExtrato(){
-        System.out.println("===== Seu Extrato da Conta =====");
+        System.out.println("=====Extrato da Conta =====");
         for (String trasacao : extrato){
             System.out.println(trasacao);
         }

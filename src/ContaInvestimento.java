@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContaInvestimento extends Conta{
-    private static final BigDecimal REDIMENTO_EXTRA_PF = new BigDecimal("0.02"); //Rendimento pessoa PF
+    private static final BigDecimal REDIMENTO_EXTRA_PF = new BigDecimal("0.02"); //Rendimento pessoa PF.
     private static final BigDecimal REDIMENTO_EXTRA_PJ = new BigDecimal("0.04"); //Rendimento dobrado pessoa PJ
 
     public ContaInvestimento(int numero, BigDecimal saldo, Cliente cliente, List<String> extrato) {
         super(numero, saldo, cliente, new ArrayList<>(extrato));
+        this.extrato = extrato;
     }
 
     // Método depositar para Conta Investimento
